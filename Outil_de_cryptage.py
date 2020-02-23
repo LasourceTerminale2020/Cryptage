@@ -102,6 +102,7 @@ def alphabet(décryptage) :
 rep=input("Voulez-vous encrypter ou décoder un texte ? ")
 cryptage=re.search(r"\Bncrypt\B", rep) or re.search(r"\Bncod\B", rep)
 décodage=re.search(r"\Bécod\B", rep) or re.search(r"\Bécrypt\B", rep)
+
 if (cryptage) :
     codage = input("Quelle sorte de codage voulez-vous utiliser ? ")
     Cesar=re.search(r"sar\b", codage)
