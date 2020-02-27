@@ -1,13 +1,53 @@
-/!\ ne pas avoir peur : D 
-
-
-
-
-
-
-
-
 import re
+#dictionnaire txt to morse
+MORSE = {' ': '_', 
+	"'": '.----.', 
+	'(': '-.--.-', 
+	')': '-.--.-', 
+	',': '--..--', 
+	'-': '-....-', 
+	'.': '.-.-.-', 
+	'/': '-..-.', 
+	'0': '-----', 
+	'1': '.----', 
+	'2': '..---', 
+	'3': '...--', 
+	'4': '....-', 
+	'5': '.....', 
+	'6': '-....', 
+	'7': '--...', 
+	'8': '---..', 
+	'9': '----.', 
+	':': '---...', 
+	';': '-.-.-.', 
+	'?': '..--..', 
+	'A': '.-', 
+	'B': '-...', 
+	'C': '-.-.', 
+	'D': '-..', 
+	'E': '.', 
+	'F': '..-.', 
+	'G': '--.', 
+	'H': '....', 
+	'I': '..', 
+	'J': '.---', 
+	'K': '-.-', 
+	'L': '.-..', 
+	'M': '--', 
+	'N': '-.', 
+	'O': '---', 
+	'P': '.--.', 
+	'Q': '--.-', 
+	'R': '.-.', 
+	'S': '...', 
+	'T': '-', 
+	'U': '..-', 
+	'V': '...-', 
+	'W': '.--', 
+	'X': '-..-', 
+	'Y': '-.--', 
+	'Z': '--..', 
+	'_': '..--.-'}
 
 def cesar (texte,key) :
     crypted_text=list(texte)
@@ -99,6 +139,13 @@ def alphabet(décryptage) :
     phrase="".join(texte)
     return phrase
 
+def convertToMorseCode(phrase):
+    phrase = phrase.upper()
+    phrasecrypte = ""
+    for lettre in phrase:
+        phrasecrypte += MORSE[lettre] + " " 
+    return phrasecrypte
+
 rep=input("Voulez-vous encrypter ou décoder un texte ? ")
 cryptage=re.search(r"\Bncrypt\B", rep) or re.search(r"\Bncod\B", rep)
 décodage=re.search(r"\Bécod\B", rep) or re.search(r"\Bécrypt\B", rep)
@@ -138,8 +185,11 @@ elif (décodage) :
         if len(list(décryptage))%2==0 :
             texte=alphabet(décryptage)
             print(texte)
-        elif :
-            MORSE
+        elif (MORSEk ) :
+        	print('Le message à mettre en morse ?')
+        	message = input()
+        	morse = convertToMorseCode(message)
+        	print(MORSE)
     elif :
         ANALYSE FRÉQUENTIELLE
 
