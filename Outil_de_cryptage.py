@@ -106,7 +106,7 @@ décodage=re.search(r"\Bécod\B", rep) or re.search(r"\Bécrypt\B", rep)
 if (cryptage) :
     codage = input("Quelle sorte de codage voulez-vous utiliser ? ")
     Cesar=re.search(r"sar\b", codage)
-    Affine=re.search("affine", codage)
+    Affine=re.search(r"ffine\b", codage)
     Vigenere=re.search(r"\Bigen\B", codage)
     Carre=re.search(r"\Barr\B" and r"lphabet\b", codage)
     if (Cesar) :
