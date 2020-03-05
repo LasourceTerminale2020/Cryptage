@@ -1,4 +1,3 @@
-	
 #dictionnaire txt to morse
 MORSE = {' ': '_', 
 		"'": '.----.', 
