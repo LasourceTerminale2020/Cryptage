@@ -157,13 +157,13 @@ def alphabet(décryptage):
     return phrase
 
 rep = input("Voulez-vous encrypter ou décoder un texte ? ")
-cryptage = re.search(r"\Bncrypt\B", rep) or re.search(r"\Bncod\B", rep)
-décodage = re.search(r"\Bécod\B", rep) or re.search(r"\Bécrypt\B", rep)
+codage = re.search(r"\Bncod\B", rep)
+décodage = re.search(r"\Bécrypt\B", rep)
 
-if (cryptage):  # pour encoder un texte
-    codage = input("Quelle sorte de codage voulez-vous utiliser ? ")
-    Carre = re.search(r"\Barr\B" and r"lphabet\b", codage)
-    Morse = search("morse" or "Morse", codage)
+if (codage):  # pour encoder un texte
+    code = input("Quelle sorte de codage voulez-vous utiliser ? ")
+    Carre = re.search(r"\Barr\B" and r"lphabet\b", code)
+    Morse = search("morse" or "Morse", code)
     if (Carre):
         texte = input(
             "Quel texte voulez-vous encrypter ? /!\ pas de caractères spéciaux s'il vous plaît : ) ")
@@ -176,11 +176,11 @@ if (cryptage):  # pour encoder un texte
 	print(texte)
 	
 elif (décodage):  # pour décoder un texte
-    décryptage = input("Quel est le texte à décoder ? ")
+    décode = input("Quel est le texte à décoder ? ")
 # message encrypté avec des nombres et/ou des caractères spéciaux
-    specials = re.search("\d", décryptage)
+    specials = re.search("\d", décode)
     if (specials):
         if len(list(décryptage)) % 2 == 0:
-            texte = alphabet(décryptage)
+            texte = alphabet(décode)
             print(texte)
  #      elif (morse):
