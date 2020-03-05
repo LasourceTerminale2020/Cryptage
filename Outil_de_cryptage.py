@@ -66,59 +66,9 @@ def vigenere(texte, key):
     return texte
 
 
-def carre(texte):
-    texte = texte.lower()
-    lettres = list(re.findall("\w", texte))
-    specials = list(re.findall("\W", texte))
-    texte = list(texte)
-    ordonnee = [0]*len(texte)
-    abscisse = [0]*len(texte)
-    crypted_text = ""
-    loop_ab = 0
-    loop_or = 0
-    for coco in range(len(texte)):
-        if lettres.count(texte[coco]) > 0:
-            lettres[loop_ab] = ord(lettres[loop_ab]) - 97
-            ordonnee[loop_ab] = ((lettres[loop_ab] % 5) + 1)
-            abscisse[loop_ab] = (lettres[loop_ab]//5)+1
-            crypted_text = crypted_text+str(abscisse[loop_ab])
-            crypted_text = crypted_text+str(ordonnee[loop_ab])
-            loop_ab = loop_ab+1
-        elif specials.count(texte[coco]) > 0:
-            abscisse[loop_or] = 6
-            specials[loop_or] = ord(specials[loop_or])
-            if specials[loop_or] == 32:
-                ordonnee[loop_or] = 2
-            elif specials[loop_or] == 39:
-                ordonnee[loop_or] = 5
-            elif specials[loop_or] == 44:
-                ordonnee[loop_or] = 4
-            elif specials[loop_or] == 46:
-                ordonnee[loop_or] = 3
-            crypted_text = crypted_text+str(abscisse[loop_or])
-            crypted_text = crypted_text+str(ordonnee[loop_or])
-            loop_or = loop_or+1
-    return crypted_text
-
-
-def alphabet(décryptage):
-    crypted_texte = list(str(décryptage))
-    texte = [0]*(len(crypted_texte)//2)
-    rang = 0
-    for loop in range(len(crypted_texte)):
-        if loop % 2 == 0:
-            indice_lettre = int(crypted_texte[loop])
-        elif loop % 2 == 1:
-            lettre = chr((5*(indice_lettre-1)+int(crypted_texte[loop]))+96)
-            texte[rang] = lettre
-            rang = rang+1
-    phrase = "".join(texte)
-    return phrase
-
-
-rep = input("Voulez-vous encrypter ou décoder un texte ? ")
-cryptage = re.search(r"\Bncrypt\B", rep) or re.search(r"\Bncod\B", rep)
-décodage = re.search(r"\Bécod\B", rep) or re.search(r"\Bécrypt\B", rep)
+rep = input("Voulez-vous encrypter ou décrypter un texte ? ")
+cryptage = re.search(r"\Bncrypt\B", rep)
+décodage = re.search(r"\Bécod\B", rep)
 
 if (cryptage):  # pour encoder un texte
     codage = input("Quelle sorte de codage voulez-vous utiliser ? ")
@@ -151,12 +101,8 @@ elif (décodage):  # pour décoder un texte
     décryptage = input("Quel est le texte à décoder ? ")
     # message encrypté avec des nombres et/ou des caractères spéciaux
     specials = re.search("\d", décryptage)
-    if (specials):
-        if len(list(décryptage)) % 2 == 0:
-            texte = alphabet(décryptage)
-            print(texte)
- #       elif (morse):
-    elif:
+    
+    if not(specials):
         # Ce serait possible de faire un oui/non dans l'interface graphique
         type = input("Avez-vous la clé de décodage ? Oui/Non  ")
         oui = re.search("oui" or "Oui", type)
