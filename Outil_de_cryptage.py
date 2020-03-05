@@ -8,58 +8,6 @@ def specials(texte):
     texte.remove(specials)
     return texte
 
-
-# dictionnaire txt to morse
-MORSE = {' ': '_',
-         "'": '.----.',
-         '(': '-.--.-',
-         ')': '-.--.-',
-         ',': '--..--',
-         '-': '-....-',
-         '.': '.-.-.-',
-         '/': '-..-.',
-         '0': '-----',
-         '1': '.----',
-         '2': '..---',
-         '3': '...--',
-         '4': '....-',
-         '5': '.....',
-         '6': '-....',
-         '7': '--...',
-         '8': '---..',
-         '9': '----.',
-         ':': '---...',
-         ';': '-.-.-.',
-         '?': '..--..',
-         'A': '.-',
-         'B': '-...',
-         'C': '-.-.',
-         'D': '-..',
-         'E': '.',
-         'F': '..-.',
-         'G': '--.',
-         'H': '....',
-         'I': '..',
-         'J': '.---',
-         'K': '-.-',
-         'L': '.-..',
-         'M': '--',
-         'N': '-.',
-         'O': '---',
-         'P': '.--.',
-         'Q': '--.-',
-         'R': '.-.',
-         'S': '...',
-         'T': '-',
-         'U': '..-',
-         'V': '...-',
-         'W': '.--',
-         'X': '-..-',
-         'Y': '-.--',
-         'Z': '--..',
-         '_': '..--.-'}
-
-
 def cesar(texte, key):
     crypted_text = list(texte)
     texte = specials(texte)
@@ -168,14 +116,6 @@ def alphabet(décryptage):
     return phrase
 
 
-def convertToMorseCode(phrase):
-    phrase = phrase.upper()
-    phrasecrypte = ""
-    for lettre in phrase:
-        phrasecrypte += MORSE[lettre] + " "
-    return phrasecrypte
-
-
 rep = input("Voulez-vous encrypter ou décoder un texte ? ")
 cryptage = re.search(r"\Bncrypt\B", rep) or re.search(r"\Bncod\B", rep)
 décodage = re.search(r"\Bécod\B", rep) or re.search(r"\Bécrypt\B", rep)
@@ -185,8 +125,6 @@ if (cryptage):  # pour encoder un texte
     Cesar = re.search(r"sar\b", codage)
     Affine = re.search(r"ffine\b", codage)
     Vigenere = re.search(r"\Bigen\B", codage)
-    Carre = re.search(r"\Barr\B" and r"lphabet\b", codage)
-    Morse = search("morse" or "Morse", codage)
     if (Cesar):
         texte = input(
             "Quel texte voulez-vous encrypter ? /!\ pas de nombre s'il vous plaît : ) ")
@@ -206,15 +144,6 @@ if (cryptage):  # pour encoder un texte
         key = input("Quelle est la clé de cryptage secrète ? ")
         texte = vigenere(texte, key)
         print(texte)
-    elif (Carre):
-        texte = input(
-            "Quel texte voulez-vous encrypter ? /!\ pas de caractères spéciaux s'il vous plaît : ) ")
-        texte = carre(texte)
-        print(texte)
-    elif (Morse):
-        message = input("Le message à mettre en morse ?")
-        morse = convertToMorseCode(message)
-        print(morse)
     else:
         print("Nous n'avons pas de correspondance pour ce type d'encryptage. Vérifiez l'orthographe et le nom de l'encryptage que vous souhaitez : )")
 
@@ -230,8 +159,8 @@ elif (décodage):  # pour décoder un texte
     elif:
         # Ce serait possible de faire un oui/non dans l'interface graphique
         type = input("Avez-vous la clé de décodage ? Oui/Non  ")
-        oui = search("oui" or "Oui", type)
-        non = search("non" or "Non", type)
+        oui = re.search("oui" or "Oui", type)
+        non = re.search("non" or "Non", type)
         if (oui):
             print("ok")# décoder selon la clé
         elif (non):
