@@ -71,10 +71,10 @@ cryptage = re.search(r"\Bncrypt\B", rep)
 décodage = re.search(r"\Bécod\B", rep)
 
 if (cryptage):  # pour encoder un texte
-    codage = input("Quelle sorte de codage voulez-vous utiliser ? ")
-    Cesar = re.search(r"sar\b", codage)
-    Affine = re.search(r"ffine\b", codage)
-    Vigenere = re.search(r"\Bigen\B", codage)
+    code = input("Quelle sorte de codage voulez-vous utiliser ? ")
+    Cesar = re.search(r"sar\b", code)
+    Affine = re.search(r"ffine\b", code)
+    Vigenere = re.search(r"\Bigen\B", code)
     if (Cesar):
         texte = input(
             "Quel texte voulez-vous encrypter ? /!\ pas de nombre s'il vous plaît : ) ")
@@ -98,9 +98,9 @@ if (cryptage):  # pour encoder un texte
         print("Nous n'avons pas de correspondance pour ce type d'encryptage. Vérifiez l'orthographe et le nom de l'encryptage que vous souhaitez : )")
 
 elif (décodage):  # pour décoder un texte
-    décryptage = input("Quel est le texte à décoder ? ")
+    décode = input("Quel est le texte à décoder ? ")
     # message encrypté avec des nombres et/ou des caractères spéciaux
-    specials = re.search("\d", décryptage)
+    specials = re.search("\d", décode)
     
     if not(specials):
         # Ce serait possible de faire un oui/non dans l'interface graphique
