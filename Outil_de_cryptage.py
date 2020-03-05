@@ -2,15 +2,17 @@ import re
 
 # enlever la ponctuation
 
-
-def specials(texte):
+def specials (texte) :
+    texte=input()
     specials = list(re.findall("\W", texte))
-    texte.remove(specials)
+    texte=list(texte)
+    for loop in range (len(specials)) :
+        rang=texte.index(specials[loop])
+        texte.remove(texte[rang])
     return texte
 
 def cesar(texte, key):
-    crypted_text = list(texte)
-    texte = specials(texte)
+    crypted_text = specials(texte)
     for loop in range(len(crypted_text)):
         crypted_text[loop] = chr(ord(crypted_text[loop]) + key)
         if (ord(crypted_text[loop]) > 122):
@@ -25,8 +27,7 @@ def affine(texte, key):
     derniers = "".join(liste_key[-2:])
     coeff = re.search("x$", premiers)  # cas de ax+b
     coeff_bis = re.search("x$", derniers)  # cas de b+ax
-    crypted_text = list(texte)
-    crypted_text = specials(crypted_text)
+    crypted_text = specials(texte)
     if (coeff):  # ax+b
         coefficient = int(liste_key[0])
         ordonnee = int(liste_key[3])
@@ -46,8 +47,7 @@ def affine(texte, key):
 
 
 def vigenere(texte, key):
-    crypted_text = list(lower(texte))
-    crypted_text = specials(crypted_text)
+    crypted_text = lower(specials(texte))
     key = list(key)
     a = 0
     for loop in range(len(crypted_text)):
