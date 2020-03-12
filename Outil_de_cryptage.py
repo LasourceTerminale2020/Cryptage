@@ -70,7 +70,17 @@ def cryptage_vigenere(texte, key):
     texte = "".join(crypted_text)
     return texte
 
-
+def decryptage (decode, key) :
+    specials = re.search("\d", key)
+    if not(specials) :
+        text= Decrypte_vigenere (decode, key)
+    else :
+        coefficient, ordonnee, crypted_text = fonction(key)
+        if coefficient==0 and ordonnee==0 : 
+            text=Decrypte_cesar (decode, key)
+        else :
+            text=Decrypte_affine (decode, key)
+    return text
 
 rep = input("Voulez-vous encrypter ou décrypter un texte ? ")
 cryptage = re.search(r"\Bncrypt\B", rep)
