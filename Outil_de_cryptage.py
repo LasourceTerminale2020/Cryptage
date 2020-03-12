@@ -35,12 +35,15 @@ def fonction (key) :
         coefficient = int(liste_key[2])
         ordonnee = int(liste_key[0])
     else:
-        print("Veuillez réessayer : )   (en relançant le programme) ")
-        print("N'oubliez pas que les chiffres doivent être compris entre 0 et 9")
+        coefficient = 0
+        ordonnee= 0
     return coefficient, ordonnee, crypted_text
               
 def cryptage_affine(texte, key):
     coefficient, ordonnee, crypted_text = fonction(key)
+    if coefficient==0 and ordonnee==0 :
+        print("Veuillez réessayer : )   (en relançant le programme) ")
+        print("N'oubliez pas que les chiffres doivent être compris entre 0 et 9")
     for loop in range(len(crypted_text)):
         crypted_text[loop] = chr(ord(crypted_text[loop]) * coefficient + ordonnee)
         if ord(crypted_text[loop]) > 122:
