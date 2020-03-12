@@ -1,0 +1,13 @@
+from tkinter import*
+#on crée une fenêtre TKinter
+fenetre = Tk()
+#On crée un cadre pour délimiter la taille de la fenêtre
+cadre = LabelFrame(fenetre, width = 1920, height = 1080, borderwidth = 1, text = "CryptoTool3000")
+cadre.pack(fill=BOTH)
+#On crée un label (une ligne de texte) que l'on pourra ensuite afficher dans la fenêtre TKinter
+champ_label = Label(cadre, text = "Bienvenue dans la trousse à outil de cryptographie")
+
+#On affiche le label dans la fenêtre
+champ_label.pack(side ="top", fill = X)
+#On démarre la boucle TKinter
+fenetre.mainloop()
