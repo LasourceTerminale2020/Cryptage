@@ -35,8 +35,8 @@ def fonction (key) :
         coefficient = int(liste_key[2])
         ordonnee = int(liste_key[0])
     else:
-        coefficient = 0
-        ordonnee= 0
+        coefficient=0
+        ordonnee=0
     return coefficient, ordonnee, crypted_text
               
 def cryptage_affine(texte, key):
