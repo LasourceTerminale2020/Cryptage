@@ -71,7 +71,7 @@ def cryptage_vigenere(texte, key):
     texte = "".join(crypted_text)
     return texte
 
-def Decrypte_vigenere (crypted_text, key) : #le 1er cas dans la fonction décryptage
+def decrypte_vigenere (crypted_text, key) : #le 1er cas dans la fonction décryptage
     key = list(key)
     rang_cle = 0
     rang_text = 0
@@ -86,7 +86,7 @@ def Decrypte_vigenere (crypted_text, key) : #le 1er cas dans la fonction décryp
     text = "".join(crypted_text)
     return text
 
-def Decrypte_cesar (crypted_text, key) : #le 2e cas dans la fonction décryptage
+def decrypte_cesar (crypted_text, key) : #le 2e cas dans la fonction décryptage
     for loop in range (len(crypted_text)) :
         crypted_text[loop] = chr(ord(crypted_text[loop]) - key)
     if (ord(crypted_text) > 122) :
@@ -96,7 +96,7 @@ def Decrypte_cesar (crypted_text, key) : #le 2e cas dans la fonction décryptage
     text="".join(crypted_text)
     return text
 
-def Decrypte_affine (crypted_text, key) : #le 3e cas dans la fonction décryptage
+def decrypte_affine (crypted_text, key) : #le 3e cas dans la fonction décryptage
     coefficient, ordonnee = fonction(key)
     for loop in range (len(crypted_text)) :
         crypted_text[loop] = chr((ord(crypted_text[loop]) - 8) // 3)
@@ -111,13 +111,13 @@ def decryptage (decode, key) :
     Specials = re.search("\d", key)
     crypted_text=list(decode)
     if not(Specials) :
-        text= Decrypte_vigenere (crypted_text, key)
+        text= decrypte_vigenere (crypted_text, key)
     else :
         coefficient, ordonnee = fonction(key)
         if coefficient==0 and ordonnee==0 : 
-            text=Decrypte_cesar (crypted_text, key)
+            text=decrypte_cesar (crypted_text, key)
         else :
-            text=Decrypte_affine (crypted_text, key)
+            text=decrypte_affine (crypted_text, key)
     return text
 
 rep = input("Voulez-vous encrypter ou décrypter un texte ? ")
